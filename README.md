@@ -1,4 +1,4 @@
-# 5 - Stage Mips Processor
+# 5 - Stage Pipelined Mips Processor
 ## Overview
 This document outlines the specifications for a custom Instruction Set Architecture (ISA). The ISA manages a basic processor with features including general-purpose registers, a program counter, stack pointer, condition code registers, and input-output ports. The instruction cache bus is 16 bits wide, and the memory address bus is 32 bits wide. The processor operates with a 5-stage pipeline, consisting of the stages: fetch, decode, execute, memory, and writeback.
 
