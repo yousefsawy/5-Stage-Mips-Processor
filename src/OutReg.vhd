@@ -1,0 +1,30 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+
+ENTITY OutReg IS
+	PORT (
+		CLK        : IN  STD_LOGIC;
+		RST        : IN  STD_LOGIC;
+		OutEnable  : IN  STD_LOGIC;
+		Data_IN    : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		OutputPort : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	);
+END OutReg;
+
+ARCHITECTURE a_OutReg OF OutReg IS
+	SIGNAL DATA : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	BEGIN
+		PROCESS (CLK, RST)
+		BEGIN
+			IF (RST = '1') THEN
+				DATA <= (OTHERS => '0');
+			ELSIF RISING_EDGE(CLK) THEN
+				IF (OutEnable = '1') THEN
+					DATA <= Data_IN;
+				END IF;
+			END IF;
+		END PROCESS;	
+		OutputPort <= DATA;
+END a_OutReg;
+
